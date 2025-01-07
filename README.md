@@ -8,3 +8,9 @@
     <a href="https://livewire.laravel.com"><img alt="Livewire v3.x" src="https://img.shields.io/badge/Livewire-v3.x-FB70A9?style=for-the-badge"></a>
     <a href="https://php.net"><img alt="PHP 8.3" src="https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php"></a>
 </p>
+
+Instalar 
+```
+    composer require laraveles/spanish
+    php artisan laraveles:install-lang
+```
