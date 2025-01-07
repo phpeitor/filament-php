@@ -9,7 +9,32 @@
     <a href="https://php.net"><img alt="PHP 8.3" src="https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php"></a>
 </p>
 
-Instalar 
+Crear un nuevo proyecto Laravel
+```
+    composer create-project --prefer-dist laravel/laravel .
+```
+Instalar Filament
+```
+    composer require filament/filament:"^3.2" -W
+    php artisan filament:install --panels
+```
+Ejecutar migraciones
+```
+    php artisan migrate
+```
+Crear migraciones y recursos Filament
+```
+    php artisan make:migration add_fields_to_meetings_table
+    php artisan make:filament-user
+    php artisan make:model Meeting -m
+    php artisan make:filament-resource Meeting --view
+```
+Limpiar la caché y la configuración de Laravel
+```
+    php artisan config:clear
+    php artisan optimize:clear
+```
+Instalar idioma español para Laravel
 ```
     composer require laraveles/spanish
     php artisan laraveles:install-lang
