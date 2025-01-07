@@ -17,11 +17,13 @@ class Meeting extends Model
         'details',
         'url',
         'minutes',
+        'client_name',
+        'client_email',
     ];
 
     protected $casts = [
         'meeting_date' => 'datetime',
-        'miniutes' => 'array',
+        'minutes' => 'array',
     ];
 
     public function user()

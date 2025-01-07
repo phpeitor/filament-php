@@ -4,17 +4,16 @@ namespace App\Filament\Resources\MeetingResource\Pages;
 
 use App\Filament\Resources\MeetingResource;
 use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Filament\Resources\Pages\ViewRecord;
 
-class EditMeeting extends EditRecord
+class ViewMeeting extends ViewRecord
 {
     protected static string $resource = MeetingResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\ViewAction::make(),
-            Actions\DeleteAction::make(),
+            Actions\EditAction::make(),
         ];
     }
 }
