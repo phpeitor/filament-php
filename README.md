@@ -29,6 +29,7 @@ Crear migraciones y recursos Filament
     php artisan make:filament-user
     php artisan make:model Meeting -m
     php artisan make:filament-resource Meeting --view
+    php artisan make:filament-resource User --generate
 ```
 Limpiar la caché y la configuración de Laravel
 ```
