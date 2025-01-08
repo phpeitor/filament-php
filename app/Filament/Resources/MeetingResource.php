@@ -11,11 +11,15 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\DateTimePicker;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\Section;
 
 class MeetingResource extends Resource
 {
@@ -26,6 +30,51 @@ class MeetingResource extends Resource
     protected static ?string $pluralLabel = 'reuniones';
 
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+        ->schema([
+            Section::make('Información de la reunión')
+            ->columns(3)
+            ->schema([
+                    TextEntry::make('user.name')
+                        ->label('Usuario'),
+                    TextEntry::make('meeting_date')
+                        ->label('Fecha de la reunión'),
+                    TextEntry::make('meeting_status')
+                        ->badge()
+                        ->color(fn (string $state): string => match ($state) {
+                            'requested' => 'primary',
+                            'accepted' => 'success',
+                            'finished' => 'info',
+                            'cancelled' => 'danger',
+                            default => 'gray',
+                        })
+                        ->formatStateUsing(fn (string $state): string => match ($state) {
+                                'requested' => 'Solicitada',
+                                'accepted' => 'Aceptada',
+                                'finished' => 'Finalizada',
+                                'cancelled' => 'Cancelada',
+                                default => '-',
+                        })
+                        ->label('Estado'),
+                    TextEntry::make('subject')
+                        ->label('Asunto')
+                        ->columnSpan('full'),
+                    TextEntry::make('details')
+                        ->label('Detalles')
+                        ->columnSpan('full'),
+                    TextEntry::make('url')
+                        ->label('URL de la reunión')
+                        ->columnSpan('full'),
+                    TextEntry::make('client_name')
+                        ->label('Nombre del cliente'),
+                    TextEntry::make('client_email')
+                        ->label('Correo electrónico del cliente'), 
+            ])
+        ]);
+    }
 
     public static function form(Form $form): Form
     {
@@ -50,7 +99,7 @@ class MeetingResource extends Resource
                     ->required()
                     ->columnSpan('full'),
                 Forms\Components\TextInput::make('url')
-                    ->label('URL')
+                    ->label('URL de la reunión')
                     ->url()
                     ->required()
                     ->columnSpan('full'),
@@ -74,7 +123,33 @@ class MeetingResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('meeting_date')
+                    ->label('Fecha de la reunión'),
+                TextColumn::make('subject')
+                    ->label('Asunto')
+                    ->wrap(),
+                TextColumn::make('client_name')
+                    ->label('Nombre del cliente')
+                    ->wrap(),
+                TextColumn::make('user.name')
+                    ->label('Usuario'),
+                TextColumn::make('meeting_status')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'requested' => 'primary',
+                        'accepted' => 'success',
+                        'finished' => 'info',
+                        'cancelled' => 'danger',
+                        default => 'gray',
+                    })
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                            'requested' => 'Solicitada',
+                            'accepted' => 'Aceptada',
+                            'finished' => 'Finalizada',
+                            'cancelled' => 'Cancelada',
+                            default => '-',
+                    })
+                    ->label('Estado'),
             ])
             ->filters([
                 //
@@ -84,9 +159,7 @@ class MeetingResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                
             ])
             ->emptyStateActions([
                 Tables\Actions\CreateAction::make(),
