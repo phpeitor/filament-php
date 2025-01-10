@@ -87,6 +87,6 @@ return [
 
     'livewire_loading_delay' => 'default',
 
-    'dark_mode' => true,
+    'dark_mode' => 'true',
 
 ];

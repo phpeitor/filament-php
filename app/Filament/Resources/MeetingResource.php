@@ -20,6 +20,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\Section;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\Filter;
+
 
 class MeetingResource extends Resource
 {
@@ -152,7 +155,29 @@ class MeetingResource extends Resource
                     ->label('Estado'),
             ])
             ->filters([
-                //
+                SelectFilter::make('user_id')
+                ->label('Usuario')
+                ->relationship('user', 'name'),
+                SelectFilter::make('meeting_status')
+                    ->label('Estado')
+                    ->options([
+                        'requested' => 'Solicitada',
+                        'accepted' => 'Aceptada',
+                        'finished' => 'Finalizada',
+                        'cancelled' => 'Cancelada',
+                    ]),
+                Filter::make('meeting_date')
+                ->label('Fecha de la reunión')
+                ->form([
+                    Forms\Components\DatePicker::make('from')->label('Desde'),
+                    Forms\Components\DatePicker::make('to')->label('Hasta'),
+                ])
+                ->query(function (Builder $query, array $data): Builder {
+                    return $query
+                        ->when($data['from'] ?? null, fn ($query, $date) => $query->whereDate('meeting_date', '>=', $date))
+                        ->when($data['to'] ?? null, fn ($query, $date) => $query->whereDate('meeting_date', '<=', $date));
+                }),
+            
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
