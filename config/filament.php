@@ -71,6 +71,7 @@ return [
 
     'cache_path' => base_path('bootstrap/cache/filament'),
 
+
     /*
     |--------------------------------------------------------------------------
     | Livewire Loading Delay
@@ -85,5 +86,7 @@ return [
     */
 
     'livewire_loading_delay' => 'default',
+
+    'dark_mode' => true,
 
 ];
