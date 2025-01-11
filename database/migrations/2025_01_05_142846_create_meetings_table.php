@@ -17,11 +17,9 @@ return new class extends Migration
             $table->datetime('meeting_date');
             $table->string('subject');
             $table->enum('meeting_status',['requested','accepted','finished','cancelled'])->default('requested');
-            
             $table->text('details')->nullable();
             $table->string('url')->nullable();
             $table->json('minutes')->nullable();
-
             $table->timestamps();
         });
     }

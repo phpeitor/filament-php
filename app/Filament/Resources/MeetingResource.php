@@ -95,8 +95,16 @@ class MeetingResource extends Resource
                 Forms\Components\TextInput::make('subject')
                     ->label('Asunto')
                     ->required()
-                    ->rules(['string', 'max:255'])
-                    ->columnSpan('full'),
+                    ->rules(['string', 'max:255']),
+                Select::make('meeting_status')
+                    ->label('Estado')
+                    ->options([
+                        'requested' => 'Solicitada',
+                        'accepted' => 'Aceptada',
+                        'finished' => 'Finalizada',
+                        'cancelled' => 'Cancelada',
+                    ])
+                    ->required(),
                 Forms\Components\Textarea::make('details')
                     ->label('Detalles')
                     ->required()
