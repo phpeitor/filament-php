@@ -19,15 +19,22 @@ class Meeting extends Model
         'minutes',
         'client_name',
         'client_email',
+        'user_session', 
     ];
 
     protected $casts = [
         'meeting_date' => 'datetime',
-        'minutes' => 'array',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    protected static function booted()
+    {
+        static::creating(function ($meeting) {
+            $meeting->user_session = auth()->id(); 
+        });
     }
 }

@@ -23,7 +23,7 @@ class PhpeitorPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-        
+            ->sidebarFullyCollapsibleOnDesktop()
             ->default()
             ->profile()
             ->brandName('PHPeitor')
