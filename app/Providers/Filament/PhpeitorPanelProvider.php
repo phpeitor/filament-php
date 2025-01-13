@@ -17,6 +17,8 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Illuminate\Contracts\View\View;
+
 
 class PhpeitorPanelProvider extends PanelProvider
 {
@@ -30,6 +32,11 @@ class PhpeitorPanelProvider extends PanelProvider
             ->id('phpeitor')
             ->path('phpeitor')
             ->login()
+            ->renderHook(
+                'panels::body.end',
+                fn (): View => view('filament.footer')
+            )
+            ->viteTheme('resources/css/filament/phpeitor/theme.css')
             ->colors([
                 'primary' => Color::Amber,
             ])

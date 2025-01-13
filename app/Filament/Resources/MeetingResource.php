@@ -34,14 +34,6 @@ class MeetingResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
 
-    protected static function booted()
-    {
-        static::creating(function ($meeting) {
-            $meeting->user_session = auth()->id(); 
-        });
-    }
-
-
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist
