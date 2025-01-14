@@ -29,9 +29,11 @@ class PhpeitorPanelProvider extends PanelProvider
             ->default()
             ->profile()
             ->brandName('PHPeitor')
+            ->brandLogo(fn (): View => view('filament.logo'))
             ->id('phpeitor')
             ->path('phpeitor')
             ->login()
+            ->darkMode(true)
             ->renderHook(
                 'panels::body.end',
                 fn (): View => view('filament.footer')
