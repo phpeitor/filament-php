@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff569bedee12e61995670cbc1e4074c7",
+    "content-hash": "2e71e07ab7e790f2ed801090596ffb08",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -4704,6 +4704,80 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "rmsramos/system-info",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rmsramos/system-info.git",
+                "reference": "02549c6515cef1256da04e63a7748d0da196bb34"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rmsramos/system-info/zipball/02549c6515cef1256da04e63a7748d0da196bb34",
+                "reference": "02549c6515cef1256da04e63a7748d0da196bb34",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.2",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.16",
+                "nunomaduro/collision": "^8.1.1||^7.10.0",
+                "orchestra/testbench": "^9.0.0||^8.22.0",
+                "pestphp/pest": "^2.34",
+                "pestphp/pest-plugin-arch": "^2.7",
+                "pestphp/pest-plugin-laravel": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "SystemInfo": "Rmsramos\\SystemInfo\\Facades\\SystemInfo"
+                    },
+                    "providers": [
+                        "Rmsramos\\SystemInfo\\SystemInfoServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rmsramos\\SystemInfo\\": "src/",
+                    "Rmsramos\\SystemInfo\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rômulo Ramos",
+                    "email": "rmsramos@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A very simple plugin to show system info widget",
+            "homepage": "https://github.com/rmsramos/system-info",
+            "keywords": [
+                "Rmsramos",
+                "laravel",
+                "system-info"
+            ],
+            "support": {
+                "issues": "https://github.com/rmsramos/system-info/issues",
+                "source": "https://github.com/rmsramos/system-info"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/rmsramos",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-06-24T17:58:48+00:00"
         },
         {
             "name": "ryangjchandler/blade-capture-directive",

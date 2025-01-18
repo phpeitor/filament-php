@@ -18,6 +18,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Contracts\View\View;
+use Rmsramos\SystemInfo\SystemInfoPlugin;
 
 
 class PhpeitorPanelProvider extends PanelProvider
@@ -28,9 +29,10 @@ class PhpeitorPanelProvider extends PanelProvider
             ->sidebarFullyCollapsibleOnDesktop()
             ->default()
             ->profile()
-            ->brandName('PHPeitor')
-            ->brandLogo(fn (): View => view('filament.logo'))
-            ->brandLogoHeight('2rem')
+            ->brandName(name: 'PHPeitor')
+            ->brandLogo(fn(): View => view('filament.logo'))
+            ->brandLogoHeight(fn() => auth()->check() ? '1.6rem' : '2rem')
+            ->favicon(asset('images/favicon-32x32.png'))
             ->id('phpeitor')
             ->path('phpeitor')
             ->login()
@@ -52,6 +54,10 @@ class PhpeitorPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
                 //Widgets\FilamentInfoWidget::class,
+            ])
+            ->plugins([
+                SystemInfoPlugin::make()
+                    ->setSort(2),
             ])
             ->middleware([
                 EncryptCookies::class,
