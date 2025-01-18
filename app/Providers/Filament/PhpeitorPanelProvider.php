@@ -30,7 +30,7 @@ class PhpeitorPanelProvider extends PanelProvider
             ->profile()
             ->brandName('PHPeitor')
             ->brandLogo(fn (): View => view('filament.logo'))
-            ->brandLogoHeight('3rem')
+            ->brandLogoHeight('2rem')
             ->id('phpeitor')
             ->path('phpeitor')
             ->login()
