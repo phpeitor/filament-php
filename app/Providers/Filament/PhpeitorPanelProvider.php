@@ -8,6 +8,7 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
 use Filament\Panel;
+use Filament\Enums\ThemeMode;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
@@ -20,7 +21,6 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Contracts\View\View;
 use Rmsramos\SystemInfo\SystemInfoPlugin;
 
-
 class PhpeitorPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -30,6 +30,7 @@ class PhpeitorPanelProvider extends PanelProvider
             ->default()
             ->profile()
             ->brandName(name: 'PHPeitor')
+            ->defaultThemeMode(ThemeMode::Dark)
             ->brandLogo(fn(): View => view('filament.logo'))
             ->brandLogoHeight(fn() => auth()->check() ? '1.6rem' : '2rem')
             ->favicon(asset('images/favicon-32x32.png'))

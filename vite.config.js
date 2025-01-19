@@ -4,7 +4,7 @@ import laravel from 'laravel-vite-plugin';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js', 'resources/css/filament/phpeitor/theme.css'],
+            input: ['resources/css/app.css', 'resources/js/app.js', 'resources/css/filament/phpeitor/theme.css', 'resources/css/custom-login.css'],
             refresh: true,
         }),
     ],
