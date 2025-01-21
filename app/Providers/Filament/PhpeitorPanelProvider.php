@@ -20,6 +20,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Contracts\View\View;
 use Rmsramos\SystemInfo\SystemInfoPlugin;
+use Stephenjude\FilamentDebugger\DebuggerPlugin;
 
 class PhpeitorPanelProvider extends PanelProvider
 {
