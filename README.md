@@ -41,3 +41,18 @@ Instalar idioma español para Laravel
     composer require laraveles/spanish
     php artisan laraveles:install-lang
 ```
+Logo & Favicon
+```php
+    ->brandName(name: 'PHPeitor')
+    ->brandLogo(fn(): View => view('filament.logo'))
+    ->brandLogoHeight(fn() => auth()->check() ? '1.6rem' : '2rem')
+    ->favicon(asset('images/favicon-32x32.png'))
+```
+Footer
+```php
+    ->renderHook(
+        'panels::body.end',
+        fn (): View => view('filament.footer')
+    )
+    ->viteTheme('resources/css/filament/phpeitor/theme.css')
+```
