@@ -13,11 +13,7 @@ class CustomerOverview extends BaseWidget
             Stat::make('Unique views', '192.1k')
                 ->description('32k increase')
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
-                ->color('success'),
-            Stat::make('Bounce rate', '21%')
-                ->description('7% increase')
-                ->descriptionIcon('heroicon-m-arrow-trending-down')
-                ->color('danger'),
+                ->color('success')
         ];
     }
 }
