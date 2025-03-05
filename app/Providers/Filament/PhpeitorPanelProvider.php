@@ -2,7 +2,9 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\Resources\CustomerResource\Widgets\CustomerOverview;
+use App\Filament\Resources\CustomerResource\Widgets\UserOverview;
+use App\Filament\Resources\CustomerResource\Widgets\UserChartOverview;
+use App\Filament\Resources\CustomerResource\Widgets\MeetingOverview;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -63,7 +65,9 @@ class PhpeitorPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                CustomerOverview::class,
+                UserOverview::class,
+                MeetingOverview::class,
+                UserChartOverview::class,
                 //Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([

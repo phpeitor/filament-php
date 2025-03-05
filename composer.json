@@ -10,6 +10,7 @@
         "filament/filament": "^3.2",
         "filament/forms": "^3.2",
         "filament/tables": "^3.2",
+        "flowframe/laravel-trend": "^0.4.0",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "laraveles/spanish": "^1.5",

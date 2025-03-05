@@ -8,7 +8,7 @@ use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Card;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
-class CustomerOverview extends BaseWidget
+class UserOverview extends BaseWidget
 {
     protected function getStats(): array
     {
