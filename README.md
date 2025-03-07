@@ -56,3 +56,5 @@ Footer
     )
     ->viteTheme('resources/css/filament/phpeitor/theme.css')
 ```
+[![Video](https://img.youtube.com/vi/YkIvt1Mcfq4/0.jpg)](https://www.youtube.com/watch?v=YkIvt1Mcfq4)  
+[Ver demo](https://www.youtube.com/watch?v=YkIvt1Mcfq4)
