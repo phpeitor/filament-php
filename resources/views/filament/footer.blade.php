@@ -1,4 +1,12 @@
-<footer class="relative bottom-0 left-0 z-20 w-full p-2 bg-white border-t border-gray-100 shadow md:flex md:items-center md:justify-between md:p-2 dark:bg-gray-800 dark:border-gray-600">
-    <span class="text-sm text-white-500 sm:text-center dark:text-gray-400">© {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
+<footer style="padding: .75rem 1rem; text-align: center;">
+    <span
+        style="
+            display: inline-flex;
+            color: rgba(255, 255, 255, .68);
+            font-size: .8125rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+        "
+    >
+        © {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
     </span>
 </footer>

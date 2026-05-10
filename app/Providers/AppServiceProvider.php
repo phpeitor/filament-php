@@ -16,8 +16,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         FilamentView::registerRenderHook(
-            'panels::auth.login.form.after',
-            fn (): string => Blade::render('@vite(\'resources/css/custom-login.css\')'),
+            'panels::head.end',
+            fn (): string => request()->routeIs('filament.phpeitor.auth.login')
+                ? Blade::render('@vite(\'resources/css/custom-login.css\')')
+                : '',
         );
        
     }

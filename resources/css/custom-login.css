@@ -1,4 +1,11 @@
-body {
-    background: rgb(var(--primary-900));
-    background: url("/images/filament-bg.jpg") center / cover, linear-gradient(0deg, rgba(var(--primary-900), 1) 0%, rgba(var(--primary-500)) 100%);
+html,
+body,
+.fi-simple-layout {
+    min-height: 100%;
+    background-color: rgb(var(--primary-900));
+    background-image: linear-gradient(rgba(0, 0, 0, .35), rgba(0, 0, 0, .55)), url("/images/filament-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
