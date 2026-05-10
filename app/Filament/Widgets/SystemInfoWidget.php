@@ -15,6 +15,11 @@ class SystemInfoWidget extends Widget
 
     protected int | string | array $columnSpan = 1;
 
+    public static function canView(): bool
+    {
+        return is_file(storage_path('app/phpeitor/system-info.json'));
+    }
+
     protected function getViewData(): array
     {
         $path = storage_path('app/phpeitor/system-info.json');

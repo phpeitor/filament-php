@@ -1,58 +1,78 @@
-<p align="center">
-    <img src="https://github.com/filamentphp/filament/assets/41773797/8d5a0b12-4643-4b5c-964a-56f0db91b90a" alt="Banner" style="width: 100%; max-width: 800px;" />
-</p>
+# PHPeitor
 
-<p align="center">
-    <a href="https://github.com/filamentphp/filament/actions"><img alt="Tests passing" src="https://img.shields.io/badge/Tests-passing-green?style=for-the-badge&logo=github"></a>
-    <a href="https://laravel.com"><img alt="Laravel v11.x" src="https://img.shields.io/badge/Laravel-v11.x-FF2D20?style=for-the-badge&logo=laravel"></a>
-    <a href="https://livewire.laravel.com"><img alt="Livewire v3.x" src="https://img.shields.io/badge/Livewire-v3.x-FB70A9?style=for-the-badge"></a>
-    <a href="https://filamentphp.com"><img alt="Filament v3.x" src="https://img.shields.io/badge/Filament-v3.x-d97706?style=for-the-badge"></a>
-    <a href="https://php.net"><img alt="PHP 8.3" src="https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php"></a>
-</p>
+Panel administrativo construido con Laravel, Filament y Livewire.
 
-Crear un nuevo proyecto Laravel
+## Stack
+
+- PHP `8.3`
+- Laravel `11.x`
+- Filament `5.x`
+- Livewire `4.x`
+- SQL Server como conexión principal del proyecto
+
+## Instalación
+
+```bash
+composer install
+npm install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+npm run build
 ```
-    composer create-project --prefer-dist laravel/laravel .
+
+## Panel Filament
+
+URL local:
+
+```text
+http://127.0.0.1:8000/phpeitor
 ```
-Instalar Filament
+
+Crear usuario Filament:
+
+```bash
+php artisan make:filament-user
 ```
-    composer require filament/filament:"^3.2" -W
-    php artisan filament:install --panels
+
+Publicar assets de Filament cuando falten archivos JS/CSS o fuentes:
+
+```bash
+php artisan filament:assets
+php artisan optimize:clear
 ```
-Ejecutar migraciones
+
+## Widget De Información Del Sistema
+
+El dashboard incluye un widget propio que muestra versiones de Filament, Laravel y PHP.
+
+El widget no aparece hasta que se genere el archivo de información con:
+
+```bash
+php artisan phpeitor:system-info
 ```
-    php artisan migrate
+
+Ese comando crea o actualiza:
+
+```text
+storage/app/phpeitor/system-info.json
 ```
-Crear migraciones y recursos Filament
+
+Ejecuta el comando otra vez cuando actualices PHP, Laravel o Filament.
+
+## Comandos Útiles
+
+```bash
+php artisan about
+php artisan optimize:clear
+php artisan route:list --path=phpeitor
+npm run build
 ```
-    php artisan make:migration add_fields_to_meetings_table
-    php artisan make:filament-user
-    php artisan make:model Meeting -m
-    php artisan make:filament-resource Meeting --view
-    php artisan make:filament-resource User --generate
-```
-Limpiar la caché y la configuración de Laravel
-```
-    php artisan config:clear
-    php artisan optimize:clear
-```
-Instalar idioma español para Laravel
-```
-    composer require laraveles/spanish
-    php artisan laraveles:install-lang
-```
-Logo & Favicon
-```php
-    ->brandName(name: 'PHPeitor')
-    ->brandLogo(fn(): View => view('filament.logo'))
-    ->brandLogoHeight(fn() => auth()->check() ? '1.6rem' : '2rem')
-    ->favicon(asset('images/favicon-32x32.png'))
-```
-Footer
-```php
-    ->renderHook(
-        'panels::body.end',
-        fn (): View => view('filament.footer')
-    )
-    ->viteTheme('resources/css/filament/phpeitor/theme.css')
+
+## Desarrollo
+
+Las reglas de desarrollo del proyecto están en:
+
+```text
+DEVELOPMENT_RULES.md
 ```
