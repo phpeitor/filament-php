@@ -9,6 +9,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Enums\UserMenuPosition;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Enums\ThemeMode;
@@ -31,6 +32,8 @@ class PhpeitorPanelProvider extends PanelProvider
             ->sidebarFullyCollapsibleOnDesktop()
             ->default()
             ->profile()
+            ->topbar()
+            ->userMenu(position: UserMenuPosition::Topbar)
             ->registration()
             ->passwordReset()
             ->emailVerification()

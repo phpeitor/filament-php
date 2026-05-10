@@ -7,6 +7,11 @@ return [
     'except' => [
         'telescope*',
         'horizon*',
+        'phpeitor*',
+        'js/filament*',
+        'css/filament*',
+        'fonts/filament*',
+        'livewire*',
     ],
 
     /*
