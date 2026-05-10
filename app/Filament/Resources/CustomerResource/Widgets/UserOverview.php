@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\CustomerResource\Widgets;
 
+use App\Models\Meeting;
 use App\Models\User;
 use Filament\Support\Enums\IconPosition;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
@@ -18,9 +19,9 @@ class UserOverview extends BaseWidget
                 ->chart([2,3,5,10,20,40])
                 ->color('success'),
 
-            Stat::make('Total', 100)
+            Stat::make('Reuniones', Meeting::count())
                 ->color('primary')
-                ->description('Total users'),
+                ->description('Total reuniones'),
 
             Stat::make('Admin', 4)
                 ->color('danger')

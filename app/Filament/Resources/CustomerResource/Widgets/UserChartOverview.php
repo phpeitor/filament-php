@@ -13,10 +13,12 @@ class UserChartOverview extends ChartWidget
 
     protected static ?int $sort = 2;
 
+    protected ?string $maxHeight = '300px';
+
     protected function getData(): array
     {
         $data = User::selectRaw("MONTH(created_at) as month_number, DATENAME(MONTH, created_at) as month_name, COUNT(*) as aggregate")
-        ->whereBetween('created_at', ['2025-01-01 00:00:00.000', '2025-12-31 23:59:59.999'])
+        ->whereYear('created_at', now()->year)
         ->groupByRaw("MONTH(created_at), DATENAME(MONTH, created_at)")
         ->orderBy("month_number")
         ->get();
@@ -25,10 +27,10 @@ class UserChartOverview extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'Usuarios',
-                    'data' => $data->pluck('aggregate'),
+                    'data' => $data->pluck('aggregate')->all(),
                 ],
             ],
-            'labels' => $data->pluck('month_name'),
+            'labels' => $data->pluck('month_name')->all(),
         ];
     }
 

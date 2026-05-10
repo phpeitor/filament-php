@@ -12,7 +12,7 @@ class MeetingOverview extends ChartWidget
 
     protected static ?int $sort = 1;
 
-    protected ?string $maxHeight = '100px';
+    protected ?string $maxHeight = '300px';
 
     protected function getData(): array
     {
