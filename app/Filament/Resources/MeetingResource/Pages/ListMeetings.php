@@ -15,7 +15,8 @@ class ListMeetings extends ListRecords
         return [
             Actions\CreateAction::make()
                 ->icon('heroicon-o-plus')
-                ->iconButton(),
+                ->label('')
+                ->tooltip('Crear'),
         ];
     }
 }
