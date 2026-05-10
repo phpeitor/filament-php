@@ -7,6 +7,7 @@ use App\Filament\Resources\MeetingResource\RelationManagers;
 use App\Models\Meeting;
 use App\Models\User;
 use BackedEnum;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -189,14 +190,14 @@ class MeetingResource extends Resource
             
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Actions\ViewAction::make(),
+                Actions\EditAction::make(),
             ])
             ->bulkActions([
                 
             ])
             ->emptyStateActions([
-                Tables\Actions\CreateAction::make(),
+                Actions\CreateAction::make(),
             ])
             ->emptyStateDescription('Crea una reunión para comenzar.');
     }

@@ -5,7 +5,6 @@ namespace App\Filament\Resources\CustomerResource\Widgets;
 use App\Models\User;
 use Filament\Support\Enums\IconPosition;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
-use Filament\Widgets\StatsOverviewWidget\Card;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class UserOverview extends BaseWidget
@@ -19,15 +18,15 @@ class UserOverview extends BaseWidget
                 ->chart([2,3,5,10,20,40])
                 ->color('success'),
 
-            Card::make('Total', 100)
+            Stat::make('Total', 100)
                 ->color('primary')
                 ->description('Total users'),
 
-            Card::make('Admin', 4)
+            Stat::make('Admin', 4)
                 ->color('danger')
                 ->description('Admin users'),
 
-            Card::make('Active', 88)
+            Stat::make('Active', 88)
                 ->color('success')
                 ->description('Active users'),
         ];
