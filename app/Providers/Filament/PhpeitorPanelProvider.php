@@ -41,7 +41,7 @@ class PhpeitorPanelProvider extends PanelProvider
             ->brandName(name: 'PHPeitor')
             ->defaultThemeMode(ThemeMode::Dark)
             ->brandLogo(fn(): View => view('filament.logo'))
-            ->brandLogoHeight(fn() => auth()->check() ? '1.6rem' : '2rem')
+            ->brandLogoHeight(fn() => auth()->check() ? '3.75rem' : '3.95rem')
             ->favicon(asset('images/favicon-32x32.png'))
             ->id('phpeitor')
             ->path('phpeitor')
