@@ -8,11 +8,11 @@ use Illuminate\Support\Carbon;
 
 class MeetingOverview extends ChartWidget
 {
-    protected static ?string $heading = 'Reuniones Chart';
+    protected ?string $heading = 'Reuniones Chart';
 
     protected static ?int $sort = 1;
 
-    protected static ?int $chartHeight = 100; 
+    protected ?string $maxHeight = '100px';
 
     protected function getData(): array
     {

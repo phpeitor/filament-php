@@ -6,9 +6,10 @@ use App\Filament\Resources\MeetingResource\Pages;
 use App\Filament\Resources\MeetingResource\RelationManagers;
 use App\Models\Meeting;
 use App\Models\User;
+use BackedEnum;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
@@ -19,7 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Components\Section;
+use Filament\Schemas\Components\Section;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\Filter;
 
@@ -32,9 +33,9 @@ class MeetingResource extends Resource
 
     protected static ?string $pluralLabel = 'reuniones';
 
-    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static BackedEnum|string|null $navigationIcon = 'heroicon-o-calendar-days';
 
-    public static function infolist(Infolist $infolist): Infolist
+    public static function infolist(Schema $infolist): Schema
     {
         return $infolist
         ->schema([
@@ -79,7 +80,7 @@ class MeetingResource extends Resource
         ]);
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $form): Schema
     {
         return $form
             ->schema([
