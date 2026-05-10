@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Widgets\SystemInfoWidget;
 use App\Filament\Resources\CustomerResource\Widgets\UserOverview;
 use App\Filament\Resources\CustomerResource\Widgets\UserChartOverview;
 use App\Filament\Resources\CustomerResource\Widgets\MeetingOverview;
@@ -62,6 +63,7 @@ class PhpeitorPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
+                SystemInfoWidget::class,
                 UserOverview::class,
                 MeetingOverview::class,
                 UserChartOverview::class,
