@@ -41,7 +41,7 @@ php artisan migrate
 npm run build
 ```
 
-## Ejecutar En Local
+## Ejecutar Local
 
 ```bash
 php artisan serve
