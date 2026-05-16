@@ -69,7 +69,7 @@ php artisan make:filament-user
 - Widget de información del sistema generado por comando Artisan.
 - Tema personalizado, logo, favicon y footer.
 
-## Widget De Información Del Sistema
+## Widget Sistema
 
 El dashboard incluye un widget propio que muestra las versiones de Filament, Laravel y PHP.
 
@@ -87,7 +87,7 @@ storage/app/phpeitor/system-info.json
 
 Ejecuta el comando nuevamente cuando actualices PHP, Laravel o Filament.
 
-## Assets De Filament
+## Assets Filament
 
 Si el panel muestra errores de consola por archivos faltantes como `/js/filament/...`, publica los assets:
 
@@ -124,7 +124,7 @@ resources/css/filament/phpeitor/theme.css
 routes/console.php
 ```
 
-## Reglas De Desarrollo
+## Reglas Desarrollo
 
 Las reglas del proyecto están documentadas en:
 
