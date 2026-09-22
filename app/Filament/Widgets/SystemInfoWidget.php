@@ -13,11 +13,11 @@ class SystemInfoWidget extends Widget
 
     protected string $view = 'filament.widgets.system-info-widget';
 
-    protected int | string | array $columnSpan = 1;
+    protected int|string|array $columnSpan = 1;
 
     public static function canView(): bool
     {
-        return is_file(storage_path('app/phpeitor/system-info.json'));
+        return true;
     }
 
     protected function getViewData(): array
@@ -53,6 +53,7 @@ class SystemInfoWidget extends Widget
                 'displayValue' => str_starts_with($item['value'], 'v') ? $item['value'] : "v{$item['value']}",
             ], $items),
             'generatedAt' => $info['generated_at'] ?? null,
+            'snapshotAvailable' => is_file($path),
         ];
     }
 }

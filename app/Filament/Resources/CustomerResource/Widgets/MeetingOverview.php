@@ -4,7 +4,6 @@ namespace App\Filament\Resources\CustomerResource\Widgets;
 
 use App\Models\Meeting;
 use Filament\Widgets\ChartWidget;
-use Illuminate\Support\Carbon;
 
 class MeetingOverview extends ChartWidget
 {
@@ -16,29 +15,34 @@ class MeetingOverview extends ChartWidget
 
     protected function getData(): array
     {
-        $threeMonthsAgo = Carbon::now()->subMonths(3)->startOfDay();
-        $data = Meeting::selectRaw("meeting_status, COUNT(*) as aggregate")
-        ->where('created_at', '>=', $threeMonthsAgo)
-        ->groupByRaw("meeting_status")
-        ->orderBy("meeting_status")
-        ->get();
+        $data = Meeting::selectRaw('meeting_status, COUNT(*) as aggregate')
+            ->groupByRaw('meeting_status')
+            ->orderBy('meeting_status')
+            ->get();
 
         $colors = [
-            'requested' => '#FFCE56', 
-            'Confirmado' => '#36A2EB', 
-            'cancelled' => '#FF6384', 
-            'finished' => '#4CAF50', 
+            'requested' => '#FFCE56',
+            'accepted' => '#36A2EB',
+            'cancelled' => '#FF6384',
+            'finished' => '#4CAF50',
+        ];
+
+        $labels = [
+            'requested' => 'Solicitadas',
+            'accepted' => 'Aceptadas',
+            'cancelled' => 'Canceladas',
+            'finished' => 'Finalizadas',
         ];
 
         return [
             'datasets' => [
                 [
                     'label' => 'Reuniones',
-                    'data' => $data->pluck('aggregate'),
-                    'backgroundColor' => $data->pluck('meeting_status')->map(fn($status) => $colors[$status] ?? '#999999'), 
+                    'data' => $data->pluck('aggregate')->all(),
+                    'backgroundColor' => $data->pluck('meeting_status')->map(fn ($status) => $colors[$status] ?? '#999999')->all(),
                 ],
             ],
-            'labels' => $data->pluck('meeting_status'),
+            'labels' => $data->pluck('meeting_status')->map(fn ($status) => $labels[$status] ?? $status)->all(),
         ];
     }
 

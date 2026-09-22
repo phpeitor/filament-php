@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use BackedEnum;
 use Filament\Actions;
@@ -12,8 +11,6 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UserResource extends Resource
 {
@@ -33,6 +30,22 @@ class UserResource extends Resource
                     ->required()
                     ->maxLength(510),
                 Forms\Components\DateTimePicker::make('email_verified_at'),
+                Forms\Components\Select::make('type')
+                    ->label('Tipo')
+                    ->options([
+                        'admin' => 'Admin',
+                        'agent' => 'Agent',
+                    ])
+                    ->default('agent')
+                    ->required(),
+                Forms\Components\Select::make('status')
+                    ->label('Estado')
+                    ->options([
+                        'active' => 'Activo',
+                        'inactive' => 'Inactivo',
+                    ])
+                    ->default('active')
+                    ->required(),
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required()
@@ -48,6 +61,16 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('type')
+                    ->label('Tipo')
+                    ->badge()
+                    ->formatStateUsing(fn (string $state): string => $state === 'admin' ? 'Admin' : 'Agent')
+                    ->color(fn (string $state): string => $state === 'admin' ? 'danger' : 'primary'),
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Estado')
+                    ->badge()
+                    ->formatStateUsing(fn (string $state): string => $state === 'active' ? 'Activo' : 'Inactivo')
+                    ->color(fn (string $state): string => $state === 'active' ? 'success' : 'gray'),
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->dateTime()
                     ->sortable(),

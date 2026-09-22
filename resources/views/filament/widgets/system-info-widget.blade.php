@@ -26,12 +26,14 @@
             @endforeach
         </div>
 
-        <p style="margin: 1rem 0 0; font-size: .75rem; line-height: 1rem; color: rgb(156, 163, 175);">
-            @if ($generatedAt)
-                Actualizado: {{ $generatedAt }}
-            @else
-                Ejecuta <code>php artisan phpeitor:system-info</code> para guardar esta información.
-            @endif
-        </p>
+        @if (! $generatedAt)
+            <div style="margin: 1rem 0 0; font-size: .75rem; line-height: 1rem; color: rgb(156, 163, 175);">
+                <div style="display: flex; align-items: center; gap: .5rem;">
+                    <span style="display: block; width: .5rem; height: .5rem; border-radius: 9999px; background: rgb(245, 158, 11);"></span>
+                    <span>Preparando información del sistema...</span>
+                </div>
+                <span>Ejecuta <code>php artisan phpeitor:system-info</code> para guardar el snapshot.</span>
+            </div>
+        @endif
     </x-filament::section>
 </x-filament-widgets::widget>

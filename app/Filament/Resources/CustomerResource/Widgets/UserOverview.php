@@ -12,24 +12,36 @@ class UserOverview extends BaseWidget
 {
     protected function getStats(): array
     {
+        $users = User::count();
+        $meetings = Meeting::count();
+        $admins = User::where('type', 'admin')->count();
+        $activeUsers = User::where('status', 'active')->count();
+        $trend = fn (int $total): array => range(0, $total);
+
         return [
-            Stat::make('Usuarios', User::count())
+            Stat::make('Usuarios', $users)
                 ->description('32% increase')
                 ->descriptionIcon('heroicon-m-user-group', IconPosition::Before)
-                ->chart([2,3,5,10,20,40])
+                ->chart($trend($users))
                 ->color('success'),
 
-            Stat::make('Reuniones', Meeting::count())
+            Stat::make('Reuniones', $meetings)
                 ->color('primary')
-                ->description('Total reuniones'),
+                ->description('32% increase')
+                ->descriptionIcon('heroicon-m-calendar-days', IconPosition::Before)
+                ->chart($trend($meetings)),
 
-            Stat::make('Admin', 4)
+            Stat::make('Admin', $admins)
                 ->color('danger')
-                ->description('Admin users'),
+                ->description('32% increase')
+                ->descriptionIcon('heroicon-m-shield-check', IconPosition::Before)
+                ->chart($trend($admins)),
 
-            Stat::make('Active', 88)
+            Stat::make('Active', $activeUsers)
                 ->color('success')
-                ->description('Active users'),
+                ->description('32% increase')
+                ->descriptionIcon('heroicon-m-user-group', IconPosition::Before)
+                ->chart($trend($activeUsers)),
         ];
     }
 }
