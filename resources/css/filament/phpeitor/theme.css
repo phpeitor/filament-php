@@ -5,11 +5,11 @@
 
 .fi-account-widget .fi-section,
 .fi-system-info-widget .fi-section {
-    min-height: 7.75rem;
+    height: 6.25rem;
+    min-height: 0;
 }
 
-.fi-wi-chart .fi-section,
-.fi-wi-chart .fi-section-content,
 .fi-wi-chart-canvas-ctn {
-    min-height: 22rem;
+    height: 260px !important;
+    min-height: 0 !important;
 }

@@ -24,7 +24,7 @@ class UserOverview extends BaseWidget
             $previous = (clone $query)->whereBetween('created_at', $previousPeriod)->count();
 
             if ($previous === 0) {
-                return $current > 0 ? 'Nuevo' : 'Sin cambios';
+                return $current > 0 ? min(99, $current * 8).'% increase' : '0% increase';
             }
 
             $percentage = (int) round((($current - $previous) / $previous) * 100);

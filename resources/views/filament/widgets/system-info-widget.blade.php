@@ -3,7 +3,7 @@
         <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: center;">
             @foreach ($items as $item)
                 <div style="display: flex; align-items: center; gap: .75rem; min-width: 0;">
-                    <div style="display: flex; width: 2.25rem; height: 2.25rem; flex: 0 0 2.25rem; align-items: center; justify-content: center; border-radius: .75rem; background: rgba(107, 114, 128, .12); color: rgb(107, 114, 128);">
+                    <div style="display: flex; width: 2.75rem; height: 2.75rem; flex: 0 0 2.75rem; align-items: center; justify-content: center; border-radius: 9999px; background: rgb(17, 17, 17); color: rgb(156, 163, 175);">
                         @if ($item['icon'] === 'bolt')
                             <x-heroicon-o-bolt style="width: 1.25rem; height: 1.25rem;" />
                         @elseif ($item['icon'] === 'cube')
