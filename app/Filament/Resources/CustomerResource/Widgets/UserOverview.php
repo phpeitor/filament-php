@@ -17,29 +17,47 @@ class UserOverview extends BaseWidget
         $admins = User::where('type', 'admin')->count();
         $activeUsers = User::where('status', 'active')->count();
         $trend = fn (int $total): array => range(0, $total);
+        $currentPeriod = [now()->startOfMonth(), now()->endOfMonth()];
+        $previousPeriod = [now()->subMonth()->startOfMonth(), now()->subMonth()->endOfMonth()];
+        $change = function ($query) use ($currentPeriod, $previousPeriod): string {
+            $current = (clone $query)->whereBetween('created_at', $currentPeriod)->count();
+            $previous = (clone $query)->whereBetween('created_at', $previousPeriod)->count();
+
+            if ($previous === 0) {
+                return $current > 0 ? 'Nuevo' : 'Sin cambios';
+            }
+
+            $percentage = (int) round((($current - $previous) / $previous) * 100);
+
+            return match (true) {
+                $percentage > 0 => "{$percentage}% increase",
+                $percentage < 0 => abs($percentage).'% decrease',
+                default => 'Sin cambios',
+            };
+        };
 
         return [
             Stat::make('Usuarios', $users)
-                ->description('32% increase')
+                ->description($change(User::query()))
                 ->descriptionIcon('heroicon-m-user-group', IconPosition::Before)
                 ->chart($trend($users))
                 ->color('success'),
 
             Stat::make('Reuniones', $meetings)
                 ->color('primary')
-                ->description('32% increase')
+                ->description($change(Meeting::query()))
                 ->descriptionIcon('heroicon-m-calendar-days', IconPosition::Before)
                 ->chart($trend($meetings)),
 
             Stat::make('Admin', $admins)
                 ->color('danger')
-                ->description('32% increase')
+                ->description($change(User::where('type', 'admin')))
                 ->descriptionIcon('heroicon-m-shield-check', IconPosition::Before)
                 ->chart($trend($admins)),
 
             Stat::make('Active', $activeUsers)
                 ->color('success')
-                ->description('32% increase')
+                ->description($change(User::where('status', 'active')))
                 ->descriptionIcon('heroicon-m-user-group', IconPosition::Before)
                 ->chart($trend($activeUsers)),
         ];

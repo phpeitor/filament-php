@@ -1,4 +1,4 @@
-<x-filament-widgets::widget>
+<x-filament-widgets::widget class="fi-system-info-widget">
     <x-filament::section>
         <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: center;">
             @foreach ($items as $item)

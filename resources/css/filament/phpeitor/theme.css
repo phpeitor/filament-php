@@ -2,3 +2,14 @@
 
 @source '../../../../app/Filament/**/*.php';
 @source '../../../../resources/views/filament/**/*.blade.php';
+
+.fi-account-widget .fi-section,
+.fi-system-info-widget .fi-section {
+    min-height: 7.75rem;
+}
+
+.fi-wi-chart .fi-section,
+.fi-wi-chart .fi-section-content,
+.fi-wi-chart-canvas-ctn {
+    min-height: 22rem;
+}
