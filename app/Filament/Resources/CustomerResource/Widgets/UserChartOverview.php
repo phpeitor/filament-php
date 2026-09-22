@@ -9,7 +9,7 @@ use Filament\Widgets\ChartWidget;
 
 class UserChartOverview extends ChartWidget
 {
-    protected ?string $heading = 'Usuarios Chart';
+    protected ?string $heading = 'Usuarios';
 
     protected static ?int $sort = 2;
 

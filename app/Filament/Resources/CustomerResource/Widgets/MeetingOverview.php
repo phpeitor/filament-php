@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 
 class MeetingOverview extends ChartWidget
 {
-    protected ?string $heading = 'Reuniones Chart';
+    protected ?string $heading = 'Reuniones';
 
     protected static ?int $sort = 1;
 
