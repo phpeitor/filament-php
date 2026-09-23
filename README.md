@@ -1,5 +1,5 @@
 ## Filament Laravel 🐘
-[![forthebadge](http://forthebadge.com/images/badges/not-a-bug-a-feature.svg))](https://www.linkedin.com/in/drphp/)
+[![forthebadge](http://forthebadge.com/images/badges/not-a-bug-a-feature.svg)](https://www.linkedin.com/in/drphp/)
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/drphp/)
 
 [![Video](https://img.youtube.com/vi/YkIvt1Mcfq4/0.jpg)](https://www.youtube.com/watch?v=YkIvt1Mcfq4)  
